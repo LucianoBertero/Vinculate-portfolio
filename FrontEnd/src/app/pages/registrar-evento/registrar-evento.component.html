@@ -1,0 +1,173 @@
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Registrar evento</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+                <li class="breadcrumb-item">Registrar eventos</li>
+                <li class="breadcrumb-item active">Crear evento</li>
+            </ol>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="card">
+                    <div class="card-header color-bg">
+                        <h4 class="m-b-0 text-white">Evento</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="newEventForm" (ngSubmit)="postNewEvent()" action="#">
+                            <div class="form-body">
+                                <div class="row p-t-20">
+                                    <div class="col-md-6">
+                                        <div class="mb-2">
+                                            <input formControlName="name" type="text" [ngClass]="{'is-invalid':campoNoValidoEvento('name')}" class="form-control" placeholder="Nombre del evento">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="">
+                                            <select class="select-tipo form-control custom-select input-type" [ngClass]="{'is-invalid':campoNoValidoEvento('typeEntity')}" formControlName="typeEntity">
+                                                <option value="" selected>Seleccione tipo de evento</option>
+                                                <option  *ngFor="let event of typeOfEvent" [value]="event">{{ event }}</option>
+                                            </select>
+                                        </div>                                      
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-2">
+                                        <div class="">
+                                            <input formControlName="maxPeople" type="number" [ngClass]="{'is-invalid':campoNoValidoEvento('maxPeople')}" class="form-control form-control-danger" min="1" placeholder="Cupo">
+                                        </div>  
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="row border-custome m-2">
+                                            <div class="col-md-8">
+                                                <div class="pt-3 pb-3">
+                                                    <label for="">Fecha inicio</label>
+                                                    <input formControlName="startDate" type="date" [min]='formatearFecha()' [ngClass]="{'is-invalid':DatesValidator()}" class="form-control" placeholder="Fecha inicio evento">
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-4">
+                                                <label for="">Hora</label>
+                                                <div class="input-group">
+                                                    <input formControlName="startHour" type="time" [ngClass]="{'is-invalid':hoursValidator()}" class="form-control" value="09:30">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row border-custome m-2">
+                                            <div class="col-md-8">
+                                                <div class="pt-3 pb-3">
+                                                    <label for="">Fecha fin</label>
+                                                    <input formControlName="finishDate" type="date" [min]='formatearFecha()' [ngClass]="{'is-invalid':DatesValidator()}" class="form-control" placeholder="Fecha fin evento">
+                                                    
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                            <div class="col-md-4">
+                                                <label for="">Hora</label>
+                                                <div class="input-group">
+                                                    
+                                                    <input formControlName="finishHour" type="time" [ngClass]="{'is-invalid':hoursValidator()}" class="form-control" value="09:30">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+            
+                                 <!--/row-->
+    
+                                    <!--/span-->
+                                    
+                                 <!--/row-->
+                                 <div class="row justify-content-center mt-2">
+                                    <!--/span-->
+                                    
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input  formControlName="ubication" onkeydown="return event.key != 'Enter'" [ngClass]="{'is-invalid':campoNoValidoEvento('ubication')}" type="text"  #inputPlaces id="inputPlaces" class="form-control form-control-danger" placeholder="Ubicacion">
+                                                <span class="input-group-addon">
+                                                    <i class="fas fa-search-location"></i>
+                                                </span>
+                                                
+                                              </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-md-11 p-t-10">
+                                            
+                                        <div class="mapa" #divMap></div>
+                                     
+                                    </div>
+                             
+                                <div class="row justify-content-center mb-3">
+                                   
+                                </div>
+                            </div>
+                            <div class="row mt-2 ">
+                               <div class="col-md-12">
+                                   <textarea name="" id="" class="form-control" maxlength="400" formControlName="howToGet" [ngClass]="{'is-invalid':campoNoValidoEvento('howToGet')}" cols="15" placeholder="Como llegar" rows="4"></textarea>
+                               </div>
+                            </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <textarea name="" id="" cols="30" rows="10" maxlength="400" formControlName="description" [ngClass]="{'is-invalid':campoNoValidoEvento('description')}" type="text" class="form-control" rows="5" placeholder="Descripcion del evento"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <textarea name="" id="" cols="30" rows="10" maxlength="400" formControlName="requirements" [ngClass]="{'is-invalid':campoNoValidoEvento('requirements')}"type="text" class="form-control form-control-danger" rows="5" placeholder="Requisitos para asistir"></textarea>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="form-actions d-flex justify-content-end">
+                                <button type="button" class="btn btn-inverse mr-2">Cancelar</button>
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Crear Evento</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    
+    <div class="mapa" #divMap></div>

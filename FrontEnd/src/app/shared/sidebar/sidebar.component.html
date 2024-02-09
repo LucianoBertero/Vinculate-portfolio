@@ -1,0 +1,46 @@
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+          
+               <li class="Principal">
+                <a class=" waves-effect waves-dark m-l-20" href="#" >
+                    <i></i>
+                    <span class="hide-menu"> 
+                     
+                    <a routerLink= "/inicio"
+                    routerLinkActive="active"
+                            > Principal </a>
+                     
+                    </span>
+                </a>
+               </li>
+               
+                <li *ngFor="let item of sidebarService.menu"> 
+                   
+
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i [class]="item.icono"></i>
+                        <span class="hide-menu"> 
+                            {{ item.titulo }} 
+                         
+                        </span>
+                    </a>
+
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let subMenuItem of item.submenu">
+                            <a [routerLink]="subMenuItem.url"
+                               routerLinkActive="active"
+                               [routerLinkActiveOptions]="{ exact: true }"> {{ subMenuItem.titulo }} </a>
+                        </li>
+                    </ul>
+                </li>
+              
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

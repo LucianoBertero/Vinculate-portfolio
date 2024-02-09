@@ -1,0 +1,154 @@
+<div class="container-fluid">
+  <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+      <h3 class="text-themecolor">Estadisticas</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+        <li class="breadcrumb-item">Estadisticas</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-11">
+      <div class="card">
+        <div class="card-header color-bg">
+          <h4 class="m-b-0 text-white"><b>Perfil</b></h4>
+        </div>
+        <div class="card-body text">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <div
+                class="text-center m-b-10 justify-content-center align-items-center d-flex flex-column"
+              >
+                <div class="">
+                  <h1>Estadisticas De Usuario</h1>
+                </div>
+              </div>
+              <br>
+              <div class="">
+                
+                <!-- ############################################################################## -->
+                <!--                            GRAFICO DE TORTA                                    -->
+                <!-- ############################################################################## -->
+
+                <!--  
+                  - view: la vista del gráfico
+                  - results: los datos del gráfico
+                  - gradient: la gradiente de colores del gráfico
+                  - legend: si se muestra o no la leyenda del gráfico
+                  - labels: si se muestran o no las etiquetas del gráfico
+                  - doughnut: si el gráfico es de tipo dona o no
+                -->
+                
+                <!-- align-items-center d-flex flex-column -->
+
+                <div class="text-center justify-content-center contert">
+                
+                  <ngx-charts-pie-chart
+                    [view]="view"
+                    [results]="single"
+                    [gradient]="gradient"
+                    [legend]="showLegend"
+                    [labels]="showLabels"
+                    [doughnut]="isDoughnut"
+                    [legendTitle]="'Categoria de Usuarios'"
+                    
+                  >
+                  </ngx-charts-pie-chart>
+                
+                </div>
+                <hr>
+                <br>
+                
+                <!-- ############################################################################## -->
+                <!--                            GRAFICO DE LINEAS                                   -->
+                <!-- ############################################################################## -->
+
+                <div class="text-center justify-content-center contert">
+                <!-- <div class="form-actions justify-content-between m-t-5"> -->
+
+                <label for="mes"><b>Selecciona el mes</b> &nbsp;&nbsp;</label> 
+                <select id="mes" [(ngModel)]="selectedMonth" class="rounded">
+                
+                  <option *ngFor="let item of nombreMeses; let i = index" [value]="i + 1">{{item}}</option>
+                  <option selected value="20">Año completo</option>
+                  <!-- Agrega más opciones para otros meses -->
+                </select>
+                
+                <label for="anio">&nbsp;&nbsp; <b>Selecciona el año</b> &nbsp;&nbsp;</label>
+                <select id="anio" [(ngModel)]="selectedYear"  class="rounded">
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option> 
+                  <option value="2024">2025</option>
+                  <option value="2024">2026</option>
+                  <option value="2024">2027</option>
+                  <option value="2024">2028</option>
+                  <option value="2024">2029</option>
+                  <option value="2024">2030</option>
+                  <!-- Agrega más opciones para otros años -->
+                </select>
+                &nbsp;&nbsp;
+                  <button type="button" class="btn btn-primary" (click)="loadStatistics()">Cargar Estadísticas</button>
+              
+                <br>
+                <br>
+                
+
+                </div>
+
+                <div class="text-center m-b-10 justify-content-center contert">
+                <ngx-charts-line-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [legend]="legend"
+                [legendTitle]="'Año seleccionado'"
+              
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxis]="xAxis"
+                [yAxis]="yAxis"
+                
+                [yAxisLabel]="yAxisLabel"
+                [timeline]="timeline"
+                [results]="multiLinea"
+            
+                >
+              </ngx-charts-line-chart>
+
+              </div>
+              <hr>
+              <!-- ############################################################################## -->
+
+              </div>
+
+              
+
+              <!-- <div
+                class="row m-t-40 justify-content-center align-items-center d-flex col-12"
+              >
+                <div class="card text-left">
+                  <div class="card-body d-flex flex-column">
+                     <div class="d-block">
+                      <h2 class="card-title">Cargando....</h2>
+                    </div> 
+                  </div>
+                </div>
+
+                <div class="card text-left">
+                  <div class="card-body d-flex flex-column">
+                    <div class="d-block">
+                       <h2 class="card-title">
+                        Esta organizacion no a publicado eventos recientemente
+                      </h2> 
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

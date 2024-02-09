@@ -1,0 +1,90 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+.lineChart{
+
+    width: 80px;
+    height: 100px;
+}
+/*  */
+
+.color-bg {
+    background: #64656649;
+  }
+  
+
+  .subrayado:hover {
+    text-decoration: underline;
+  }
+  
+  .selected-container {
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    width: 100%;
+    user-select: none;
+  }
+  
+  .selected-options::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
+  .options {
+    border: 1px solid #ccc;
+    border-top: none;
+    margin-top: 9px;
+    border-radius: 0 0 4px 4px;
+    width: 100%;
+    z-index: 10;
+    overflow-y: auto;
+    z-index: 999;
+    background-color: white;
+  }
+  
+  .option {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .option:hover {
+    background-color: #007bff4d;
+  }
+  
+  .option.selected {
+    background-color: #bdd9f862;
+    color: #fff;
+  }
+  
+  .checked {
+    background-color: red;
+  }
+  
+  .option-selected {
+    background-color: rgba(211, 216, 240, 0.349);
+    content: "▼";
+  }
+
+  /*  */
+
+  .contert{
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  

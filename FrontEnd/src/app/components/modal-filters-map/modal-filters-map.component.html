@@ -1,0 +1,187 @@
+<!-- 
+<div class="fondo-modal-imagen" [class.oculto]="servicesMapFilterService.ocultarModal" >
+
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Aplicar Filtros</h4>
+                    <button type="button" class="close cursor" data-dismiss="modal" (click)="cerrarModal()" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+               
+                  <div class="demo-switch-title">Organizaciones</div>
+                  <div class="row">
+                      <div class="col-6 d-flex align-items-center">
+                          <div class="switch">
+                              <label>
+                                  <input type="checkbox"  [(ngModel)]="switchOng" checked=""><span class="lever switch-col-purple"></span>
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-6 d-flex align-items-center">
+                          <div class="selected-container">
+                              <div class="custom-select" style="z-index: 9999999;" (click)="toggleDropdown()">
+                                  <div class="selected-options">
+                                      Filtrar Organizaciones: {{ selectedOptions.length }}
+                                  </div>
+                                  <div class="options" *ngIf="dropdownOpen">
+                                      <div class="option" style="z-index: 9999999;" *ngFor="let option of entitisOng"
+                                          (click)="toggleOption(option)" [ngClass]="{ 'option-selected': option.selected }">
+                                          <input type="checkbox" [checked]="option.selected" />
+                                          {{ option.label }}
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                       
+                   
+                  <div class="demo-switch-title">Eventos</div>
+                  <div class="row">
+                      <div class="col-6 d-flex align-items-center">
+                          <div class="switch">
+                              <label>
+                                  <input type="checkbox"  [(ngModel)]="switchEvent" checked=""><span class="lever switch-col-purple"></span>
+                              </label>
+                          </div>
+                      </div>
+                      <hr>
+                      <div class="col-6 d-flex align-items-center">
+                          <div class="selected-container">
+                              <div class="custom-select" style="z-index: 9999999;" (click)="toggleDropdownEvent()">
+                                  <div class="selected-options">
+                                      Filtrar Eventos: {{ selectedOptionsEvent.length }}
+                                  </div>
+                                  <div class="options" *ngIf="dropdownOpenEvent">
+                                      <div class="option" style="z-index: 9999999;" *ngFor="let option of entitisEvent"
+                                          (click)="toggleOptionEvent(option)" [ngClass]="{ 'option-selected': option.selected }">
+                                          <input type="checkbox" [checked]="option.selected" />
+                                          {{ option.label }}
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  
+
+
+                  
+                   
+                   
+                </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                          <button type="button" class="btn btn-danger" (click)="eliminarFiltros()">Eliminar Filtros</button>
+                          <div>
+                            <button type="button" class="btn btn-inverse waves-effect" (click)="cerrarModal()" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" (click)="aplicarFiltros()" class="btn btn-success waves-effect waves-light"><i class="fa fa-check"></i>Aplicar Filtros</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                     
+                         
+                    
+                </div>
+               
+            </div>
+        </div>
+    </div> -->
+
+    <div class="fondo-modal-imagen" [class.oculto]="servicesMapFilterService.ocultarModal">
+        <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Aplicar Filtros</h4>
+                        <button type="button" class="close cursor" data-dismiss="modal" (click)="cerrarModal()" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="demo-switch-title">Organizaciones</div>
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="switchOng" checked=""><span class="lever switch-col-purple"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="selected-container" style="z-index: 9999999;">
+                                    <div class="custom-select" style="z-index: 9999999;" (click)="toggleDropdown()">
+                                        <div class="selected-options">
+                                            Filtrar Organizaciones: {{ selectedOptions.length }}
+                                        </div>
+                                        <div class="options" *ngIf="dropdownOpen" style="z-index: 9999999;" >
+                                            <div class="option" *ngFor="let option of entitisOng"
+                                                (click)="toggleOption(option)" [ngClass]="{ 'option-selected': option.selected }">
+                                                <input type="checkbox" [checked]="option.selected" />
+                                                {{ option.label }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-switch-title">Eventos</div>
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="switchEvent" checked=""><span class="lever switch-col-purple"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="selected-container">
+                                    <div class="custom-select" style="z-index: 99999;" (click)="toggleDropdownEvent()">
+                                        <div class="selected-options">
+                                            Filtrar Eventos: {{ selectedOptionsEvent.length }}
+                                        </div>
+                                        <div class="options" *ngIf="dropdownOpenEvent">
+                                            <div class="option" style="z-index: 9999999;" *ngFor="let option of entitisEvent"
+                                                (click)="toggleOptionEvent(option)" [ngClass]="{ 'option-selected': option.selected }">
+                                                <input type="checkbox" [checked]="option.selected" />
+                                                {{ option.label }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-danger m-l-10 m-b-10" (click)="eliminarFiltros()">Eliminar Filtros</button>
+                                <div>
+                                    <button type="button" class="btn btn-inverse waves-effect m-r-10 m-b-10" (click)="cerrarModal()" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" (click)="aplicarFiltros()" class="btn btn-success waves-effect waves-light m-r-10 m-b-10"><i class="fa fa-check"></i>Aplicar Filtros</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+
+  
+
+      
+
+ 

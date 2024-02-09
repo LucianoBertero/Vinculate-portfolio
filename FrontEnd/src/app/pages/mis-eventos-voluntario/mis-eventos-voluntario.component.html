@@ -1,0 +1,90 @@
+<div class="container-fluid">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Mis eventos</h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+          <li class="breadcrumb-item">Mis eventos</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-11"> 
+        <div class="card">
+          <div class="card-header color-bg">
+            <h4 class="m-b-0 text-white"><b>Eventos Inscriptos</b></h4>
+          </div>
+          <div class="card-body">
+            <div 
+              class="row d-flex justify-content-center align-items-center m-b-40"
+            >
+              <!--  -->
+              
+              <!-- Recorre el arrego eventosSuscription -->
+              <!-- <div *ngFor="let e of eventosSuscription; let i = index; if (i < eventosSuscription.length)"  class="border col-12 m-t-10"> -->
+              
+                <!-- Modificacion para que los eventos se muestren ordenados -->
+              <div *ngFor="let e of filtredEvents; let i = index; if (i < eventosSuscription.length)"  class="border col-12 m-t-10">
+
+                <div class="card text-left">
+                  <div class="card-body d-flex flex-column">
+                    <div class="">
+                      <h1 class="card-title"><FONT COLOR="purple"><b> {{ e?.name }} </b> </FONT></h1>
+                      
+                      <p></p>
+                      <p class="card-text m-t-20"><FONT COLOR="purple"><b>Descripcion: </b> </FONT> {{ e?.description }}</p>
+
+                      <div>
+                        <label><FONT COLOR="purple"><b>Tipo de evento: </b> </FONT>{{ e?.category }}</label><br>
+                        <label><FONT COLOR="purple"><b>Fecha Inicio: </b> </FONT>{{e?.startDate.split("T")[0]}}</label><br>
+                        <label><FONT COLOR="purple"><b>Cantidad maxima de personas: </b> </FONT> {{ e?.maxPeople }} </label><br>
+                        <!-- <label><FONT COLOR="purple"><b>Estado del evento: </b> </FONT> {{e.state}} </label><br> -->
+                        <label class=""><FONT COLOR="purple"><b>Estado del evento: </b> </FONT> <span class="font-weight-bold card-text" [ngClass]="{
+                          'card-proximo': e.state === 'Proximo a comenzar',
+                          'card-en-curso': e.state === 'EnCurso',
+                          'card-finalizado': e.state === 'Finalizado'
+                        }">{{e.state}}</span></label><br>
+                        <!-- <label><FONT COLOR="purple"><b>Id evento: </b> </FONT> {{ e.uid }}</label><br>
+                        <label><FONT COLOR="purple"><b>Id suscripcion: </b> </FONT> {{IdSuscriptions[i]}} </label><br>                        
+                        <label><FONT COLOR="purple"><b>Id usuario: </b> </FONT> {{this.id}}</label><br>
+                        index: {{i}}<br> -->
+                        
+
+                        <div *ngIf= "e?.state === 'Proximo a comenzar' " class=" ">
+                          <div class="d-flex justify-content-end m-t-20">
+                            <button type="button" class="btn btn-danger" (click)="borrarSuscription(e.name,e.uid,IdSuscriptions[i])" >Desincribirme </button>
+                          </div>
+                        </div>
+                        
+
+                      </div>
+                      
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+            </div>
+
+            <div *ngIf="eventosSuscription.length === 0"  class=" ">
+              <h1 class=" text-center col-12 m-t-10"><FONT COLOR="purple"><b>¡Ooops!</b></FONT></h1><br>
+              <h4 class=" text-center col-12 m-t-10">Todavia no te has inscripto a ningun evento</h4><br>
+              <h4 class=" text-center">Te recomendamos te inscribas a alguno para hacer un <FONT COLOR="green"><b>mundo mejor</b></FONT> </h4><br>
+            </div>
+
+
+            
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="form-actions d-flex justify-content-between m-t-5">
+    <button type="button" (click)="volverInicio()" class="btn btn-primary mr-auto"> Volver al inicio</button>
+  </div>
+  

@@ -1,0 +1,23 @@
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fondo-modal-imagen{
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+
+.oculto{
+    display: none;
+}
+
+.cursor:hover {
+    cursor: pointer;
+  }

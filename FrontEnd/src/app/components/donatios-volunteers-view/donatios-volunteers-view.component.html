@@ -1,0 +1,9 @@
+<div class="row justify-content-center align-items-center m-t-30 col-12">
+    <div *ngFor="let d of donations" class="col-10 border m-t-30" >
+      <div class="m-t-10">
+        <h2 class="card-title">{{ d?.title }}</h2>
+        <h4 class="card-text m-t-10">{{ d?.typeDonation }}</h4>
+        <p class="card-text m-t-20">{{ d?.description }}</p>
+    </div>
+</div>
+</div>

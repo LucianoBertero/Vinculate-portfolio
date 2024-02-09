@@ -1,0 +1,47 @@
+.color-bg {
+    background: #64656649;
+}
+
+
+
+.circular-image-container {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%; /* Aplica la forma circular */
+    margin-bottom: 10px; /* Ajusta según sea necesario */
+}
+
+.circular-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor circular */
+}
+
+
+
+.card-proximo {
+    color: rgba(6, 161, 6, 0.568);
+
+    text-transform: uppercase;
+  }
+  
+  /* Estilo para eventos "En curso" */
+  .card-en-curso {
+    color: rgba(172, 172, 9, 0.849);
+    text-transform: uppercase;
+  }
+  
+  /* Estilo para eventos "Finalizado" */
+  .card-finalizado {
+   color: rgba(253, 34, 34, 0.788);
+    text-transform: uppercase;
+  }
+
+  .csm-card {
+    background-color: #ffffff; /* Fondo blanco para la tarjeta */
+    border: 1px solid #dcdcdc; /* Borde ligero */
+    margin-top: 3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    padding-top: 2rem;
+  }

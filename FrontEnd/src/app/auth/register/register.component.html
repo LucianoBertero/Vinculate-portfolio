@@ -1,0 +1,492 @@
+
+
+<!-- 
+<div class="contenedor">
+
+    <div class="contenedor">
+        <header class="header">
+            <div class="logo-navbar animate__animated animate__backInDown">
+                <img class="img-navbar" src="../../../assets/img/logo.png" alt="">
+                <p class="text-logo">Vinculate</p>
+            </div>
+            <nav>
+                <i class="fa fa-bars icon-bars" id="icon-bars" (click)="toggleMobileMenu()"></i>
+                <ul [class.open]="isMobileMenuOpen">
+                  <li class="active-home"><a class="active-a animate_animated animate_backInRight" href="#">INICIO</a></li>
+                  <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">EVENTOS</a></li>
+                  <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">VINCULATE</a></li>
+                  <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">CONTACTANOS</a></li>
+               </ul>
+          </nav>
+        
+        </header>
+
+
+        <div class="select-container">
+           
+           <p class="text-select">Usted se va a registar como: </p>  
+
+            <select class="text-center " [(ngModel)]="opcionSeleccionada">
+           
+                <option value="voluntario">Voluntario</option>
+                <option value="organizacion">Organizacion</option>
+            </select>
+
+
+        </div>
+      
+            <div [class.hide]="opcionSeleccionada !== 'voluntario'" #googleBtn id="buttonDiv" style="margin-top: -1.5rem;margin-bottom: 1rem;">
+            
+            </div> 
+          
+            <h3 [class.hide]="opcionSeleccionada !== 'voluntario'" > o registrate</h3>
+        
+        <div *ngIf="opcionSeleccionada==='voluntario'"class="card-container">
+         
+            <div  class="card">  
+
+                <form  [formGroup]="registerFormVoluntario" (ngSubmit)="registrarVoluntario()" >   
+
+                      <div class="input-container">
+
+                        <input formControlName="email" type="text"  [ngClass]="{'input-danger':campoNoValidoVoluntario('email')}" class="form-control input-container-voluntario " placeholder="email">
+                        <input formControlName="name" type="text" [ngClass]="{'input-danger':campoNoValidoVoluntario('name')}"  class="form-control input-container-voluntario" placeholder="nombre del usario">
+                        <input formControlName="password" type="password"  [ngClass]="{'input-danger':campoNoValidoVoluntario('password')}" class="form-control input-container-voluntario" placeholder="contraseña">
+                        <input formControlName="password2" type="password" [ngClass]="{'input-danger':campoNoValidoVoluntario('password2')}" class="form-control input-container-voluntario" placeholder="Repita la contraseña">
+                        
+                      </div>
+                      
+                        <div class="btn-register-container-voluntario">
+                            <a><button class="back-button btn-register" type="button" (click)="goBack()"><i class="fas fa-chevron-left"></i> Volver</button></a>
+                        <button type="submit"  class="btn-register-voluntario btn-register">Registrar voluntario  <i class="fas fa-chevron-right"></i></button>
+              
+                        </div>
+                                      
+                  
+                </form>
+               
+            </div>
+      
+        </div>
+        
+    <div *ngIf="opcionSeleccionada==='organizacion'" class="card-container2">   
+
+        <div class="card">
+
+            <form  [formGroup]="registerFormOrganizacion" (ngSubmit)="registrarOrganizacion()"   >
+
+                <input formControlName="email" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('email')}"  class="form-control" placeholder="Email">
+                <input formControlName="name" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('name')}" class="form-control" placeholder="Nombre de la organizacion">
+                <input formControlName="password" type="password" [ngClass]="{'input-danger':campoNoValidoOrganizacion('password')}" class="form-control" placeholder="contraseña">      
+                <input formControlName="password2" type="password" [ngClass]="{'input-danger':campoNoValidoOrganizacion('password2')}" class="form-control" placeholder="Repita la contraseña">                       
+
+
+                <select class="select-tipo" [ngClass]="{'input-type-danger':campoNoValidoOrganizacion('typeEntity')}"  formControlName="typeEntity" class="input-type custom-select "  >
+                    <option value=""selected>Seleccione tipo de organizacion</option>
+                    <option  *ngFor="let ong of tiposDeOng" [value]="ong">{{ ong }}</option> -->
+                <!-- </select> -->
+
+
+                <!-- <input formControlName="typeEntity" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('typeEntity')}" class="form-control" placeholder="Tipo entidad">       -->
+                <!-- <input formControlName="phone" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('phone')}" class="form-control" placeholder="Telefono">       
+                <input formControlName="personInCharge" [ngClass]="{'input-danger':campoNoValidoOrganizacion('personInCharge')}" type="text" class="form-control" placeholder="Persona responsable">
+                <input formControlName="cuit" type="text" class="form-control" placeholder="CUIT">      
+               
+                <input (change)="cambiarImagen($event)" [ngClass]="{'input-danger':imagenNoSeleccionada()}" formControlName="image" type="file" id="files" accept=".jpg, .jpeg, .png">
+                
+              
+                <textarea  formControlName="description" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('description')}" class="form-control" placeholder="Descripcion">   </textarea>                   
+            
+                    
+             
+                    <div class="btn-register-container">
+                        <a><button class="back-button" type="button" (click)="goBack()"><i class="fas fa-chevron-left"></i> Volver</button></a>
+                        <button type="submit"  class="btn-register-organizacion btn-register">Registrar Organizacion <i class="fas fa-chevron-right"></i></button>
+            
+                        </div>
+                    
+            </form>
+    
+                
+        </div>
+
+    </div>
+
+</div>
+<footer>
+    <div class="container-footer">
+        <div class="redes">
+            <span class="insta"><i class="fa fa-instagram"></i></span>
+            <span class="twitter"><i class="fa fa-twitter"></i></span>
+            <span class="face"><i class="fa fa-facebook-f"></i></span>
+        </div>
+    </div>
+</footer>
+</div> -->
+
+
+
+<!-- <body class="card-no-border contenedor">
+
+    <div class="preloader" style="display: none;">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Admin Pro</p>
+        </div>
+    </div>
+
+    <div class="select-container col-6 m-auto m-t-40 h-30">
+           
+        <h1 class="text-center text-white">Usted se va a registar como: </h1>  
+   
+
+         <select class="form-control rounded" [(ngModel)]="opcionSeleccionada">
+
+            <option value="voluntario">Voluntario</option>
+            <option value="organizacion">Organizacion</option>
+            
+        </select>
+
+
+     </div>
+     <div [class.hide]="opcionSeleccionada !== 'voluntario'" >
+        <h2 class="text-center text-white m-b-20">Inicia sesion con GOOGLE</h2>
+        <div #googleBtn id="buttonDiv" class="d-flex justify-content-center align-items-center ">
+            
+        </div>
+        <h2 class="text-center text-white m-t-20">O completa el siguiente formulario</h2>
+     </div> -->
+
+     <body class="card-no-border contenedor">
+
+        <div class="preloader" style="display: none;">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label">Admin Pro</p>
+            </div>
+        </div>
+        <div class="select-container col-12 col-md-6 mx-auto rounded m-t-30 text-center">
+            <h1 class="text-white m-b-4">Usted se va a registrar como:</h1>
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <select (change)="onSelectChange()" class="form-control m-b-4 select-rounded text-center m-t-10 col-xs-12 mx-auto" [(ngModel)]="opcionSeleccionada">
+                    <option value="voluntario">Voluntario</option>
+                    <option value="organizacion">Organizacion</option>
+                </select>
+            </div>
+        
+            <div [class.hide]="opcionSeleccionada !== 'voluntario'"  class="text-center">
+                <h2 class="text-white m-t-10">Inicia sesión con GOOGLE</h2>
+                <div #googleBtn id="buttonDiv" class="d-flex justify-content-center align-items-center flex-column">
+                    <!-- Contenido de inicio de sesión con Google -->
+                </div>
+                <h2 class="text-white m-t-20 m-b-20">O completa el siguiente formulario</h2>
+            </div>
+        </div>
+   
+        
+  
+
+    <!-- -------------------------------------------------------- VOLUNTARIO ----------------------------------------------------------------------------------------- -->
+
+    <section *ngIf="opcionSeleccionada==='voluntario'" id="wrapper" class="">
+        <div class="login-register  m-b-20">
+            <div class="login-box card col-12 col-md-4 m-auto"> 
+                <div class="card-body ">
+                  
+                        <form  class="form-horizontal form-material" id="loginform" [formGroup]="registerFormVoluntario" (ngSubmit)="registrarVoluntario()" >
+                        <h2 class="box-title m-b-20 text-center">NUEVO VOLUNTARIO</h2>
+
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input formControlName="email" type="text"  [ngClass]="{'input-danger':campoNoValidoVoluntario('email')}" class="form-control input-container-voluntario" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input formControlName="name" type="text" [ngClass]="{'input-danger':campoNoValidoVoluntario('name')}"  class="form-control input-container-voluntario" placeholder="Nombre del usario">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input formControlName="password" type="password"  [ngClass]="{'input-danger':campoNoValidoVoluntario('password')}" class="form-control input-container-voluntario" placeholder="Contraseña">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input formControlName="password2" type="password" [ngClass]="{'input-danger':campoNoValidoVoluntario('password2')}" class="form-control input-container-voluntario" placeholder="Repita la contraseña">
+                            </div>
+                        </div>
+                    
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button type="submit"  class="btn btn-success btn-md btn-block btn-rounded text-uppercase waves-effect waves-light">Registrarme <i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-12 text-center">
+                                Ya tenes una cuenta? <a href="" routerLink="/login" class="text-info m-l-5"><b>Iniciar Sesion</b></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+     <!-- -------------------------------------------------------- ORGANIZACION ----------------------------------------------------------------------------------------- -->
+
+    <section *ngIf="opcionSeleccionada==='organizacion' && registerUbication==false" id="wrapper" class="m-t-40">
+        <div class="login-register">
+            <div class="login-box card col-12 col-md-6 m-auto"> 
+                <div class="card-body">
+                     <form  class="form-horizontal form-material" id="loginform" [formGroup]="registerFormOrganizacion" (ngSubmit)="registrarOrganizacion()">
+                        <h2 class="box-title m-b-20 text-center">NUEVA ORGANIZACION</h2>
+
+                        <!-- -------------------------------------------------------- PRIMERA ROW ----------------------------------------------------------------------------------------- -->
+
+
+                        <div class="form-group row">
+
+                            <div class="col-md-6 col-xs-12">
+                                <input formControlName="email" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('email')}" class="form-control border mt-2" placeholder="Email">
+                            </div>
+    
+                            <div class="col-md-6 col-xs-12">
+                                <input formControlName="name" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('name')}" class="form-control border mt-2" placeholder="Nombre de la organizacion">
+                            </div>
+
+                        </div>
+
+                        <!-- -------------------------------------------------------- SEGUNDA ROW ----------------------------------------------------------------------------------------- -->
+
+                        <div class="form-group row ">
+                
+                                <div class="col-md-6 col-xs-12">
+                                    <input formControlName="password" type="password" [ngClass]="{'input-danger':campoNoValidoOrganizacion('password')}" class="form-control border mt-2" placeholder="Contraseña"> 
+                                </div>
+                            
+                                <div class="col-md-6 col-xs-12">
+                                    <input formControlName="password2" type="password"  [ngClass]="{'input-danger':campoNoValidoVoluntario('password')}" class="form-control input-container-voluntario border mt-2" placeholder="Repita la contraseña">
+                                </div>
+                                                    
+                        </div>
+
+
+                        <!-- -------------------------------------------------------- TERCERA ROW ----------------------------------------------------------------------------------------- -->
+
+                        <div class="form-group row d-flex justify-content-center bgColor">
+                            <div class="col-xs-12 custom-div">
+
+                                <select  [ngClass]="{'input-type-danger':campoNoValidoOrganizacion('typeEntity')}"  formControlName="typeEntity" class=" select-tipo text-center input-type custom-select border mt-2 "  >
+                                    <option value=""selected>Seleccione tipo de organizacion</option>
+                                    <option  *ngFor="let ong of tiposDeOng" [value]="ong">{{ ong }}</option>
+                                </select> 
+
+                            </div>
+                        </div>
+                        
+                        <!-- -------------------------------------------------------- CUARTA ROW ----------------------------------------------------------------------------------------- -->
+
+                        <div class="form-group row ">
+                
+                            
+                                <div class="col-md-6 col-xs-12">
+                                    <input formControlName="phone" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('phone')}" class="form-control border mt-2" placeholder="Telefono"> 
+                                </div>
+                            
+                                <div class="col-md-6 col-xs-12">
+                                    <input formControlName="personInCharge" [ngClass]="{'input-danger':campoNoValidoOrganizacion('personInCharge')}" type="text" class="form-control border mt-2" placeholder="Persona responsable">
+                                </div>
+                           
+                                                
+                        </div>
+
+                        <!-- -------------------------------------------------------- CUARTA ROW ----------------------------------------------------------------------------------------- -->
+
+                        <div class="form-group row ">
+                                         
+                                <div class="col-md-6 col-xs-12">
+                                    <input formControlName="cuit" type="text" class="form-control border mt-2" placeholder="CUIT"> 
+                                </div>
+                            
+     
+                                <div class="col-md-6 col-xs-12">
+                                    <input class="mt-2" (change)="cambiarImagen($event)" [ngClass]="{'input-danger':imagenNoSeleccionada()}"  formControlName="image" type="file" id="files" accept=".jpg, .jpeg, .png">
+                                </div>                      
+                                            
+                         </div>
+
+                        <!-- -------------------------------------------------------- QUINTA ROW ----------------------------------------------------------------------------------------- -->
+                        <div class="form-group row ">
+                                         
+                            <div class="col-md-6 col-xs-12">
+                                <input formControlName="cbu" type="text" class="form-control border mt-2" placeholder="CBU"> 
+                            </div>
+                        
+ 
+                            <div class="col-md-6 col-xs-12">
+                                <input formControlName="alias" type="text" class="form-control border mt-2" placeholder="ALIAS"> 
+                            </div>                     
+                                        
+                     </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <textarea   formControlName="description" type="text" [ngClass]="{'input-danger':campoNoValidoOrganizacion('description')}" class="form-control h-150 form-control-lg mt-2" placeholder="Descripcion">   </textarea>
+                            </div>
+                        </div>
+
+                        <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button (click)="addRegisterUbication()" class="btn btn-info btn-md btn-block btn-rounded text-uppercase waves-effect waves-light border col-6 col-xs-12">Ubicacion <i class="fas fa-map-marker-alt mt-2"></i></button>
+                            </div>
+                            <div class="col-xs-12 m-t-20">
+                                <button type="submit"  class="btn btn-success btn-md btn-block btn-rounded text-uppercase waves-effect waves-light border">Registrarme <i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-12 text-center">
+                                Ya tenes una cuenta? <a href="" routerLink="/login"  class="text-info m-l-5"><b>Iniciar Sesion</b></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div >
+
+   
+
+     
+                <!-- Contenido de inicio de sesión con Google -->
+            </div>
+          
+    
+   
+
+       
+    </section>  
+
+        <!-- <div [class.hide]="!registerUbication " class="card-body">
+            
+            <div class="row justify-content-center mt-2">
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input   name="ubication" [ngClass]="{'is-invalid':campoNoValidoOrganizacion('ubication')}" onkeydown="return event.key != 'Enter'"  [(ngModel)]="ubication"  type="text"  #inputPlaces id="inputPlaces" class="form-control form-control-danger" placeholder="Ubicacion">
+                            <span class="input-group-addon">
+                                <i class="fas fa-search-location"></i>
+                            </span>
+                            
+                          </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-md-11 p-t-10">
+                        
+                    <div class="mapa" #divMap></div>
+                 
+                </div>
+         
+            <div class="row justify-content-center mb-3">
+               
+            </div>
+        </div>
+            
+        <textarea [(ngModel)]="howToGet"   [ngClass]="{'is-invalid':campoNoValidoOrganizacion('ubication')}" type="text" placeholder="Como Llegar???" class="form-control h-150 form-control-lg ng-untouched ng-pristine ng-valid">   </textarea>
+     
+            <div class="d-flex justify-content-center m-t-40">
+                <button [ngClass]="{'disabled': markerValidation == 1}" (click)="confirmationRegisterUbication()" class="btn btn-success"><i class="fas fa-chevron-left"></i> Confirmar Ubicacion</button>
+            </div>
+
+            <div class="d-flex justify-content-center m-t-40">
+                <button (click)="addRegisterUbication()" class="btn btn-inverse"><i class="fas fa-chevron-left"></i> Cancelar/Volver</button>
+            </div>
+
+        </div> -->
+
+        <div [class.hide]="!registerUbication" class="container mt-4">
+            <div class="card login-box">
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input
+                        [ngClass]="{'is-invalid': markerValidation === 1 && sumbitted === false}"
+                          name="ubication"
+                          onkeydown="return event.key != 'Enter'"
+                          [(ngModel)]="ubication"
+                          type="text"
+                          #inputPlaces
+                          id="inputPlaces"
+                          class="form-control form-control-danger"
+                          placeholder="Ubicacion"
+                        />
+                        <span class="input-group-addon">
+                          <i class="fas fa-search-location"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="row justify-content-center mt-2">
+                  <div class="col-md-11 p-t-10">
+                    <div class="mapa" #divMap></div>
+                  </div>
+                </div>
+          
+                <div class="row justify-content-center mb-3"></div>
+          
+                <textarea
+                [ngClass]="{'is-invalid': howToGet == '' && sumbitted === false}"
+                  [(ngModel)]="howToGet"
+                  type="text"
+                  placeholder="Como Llegar???"
+                  class="form-control h-150 form-control-lg ng-untouched ng-pristine ng-valid"
+                ></textarea>
+
+                <div class="d-flex justify-content-end mt-4 col-12">
+                    <div class="mr-2"> <!-- Agrega margen derecho -->
+                      <button (click)="addRegisterUbication()" class="btn btn-inverse">
+                        <i class="fas fa-chevron-left"></i> Cancelar/Volver
+                      </button>
+                    </div>
+                    
+                    <div>
+                      <button
+                        [disabled]="howToGet == '' && markerValidation == 1"
+                        [ngClass]="{'disabled': markerValidation == 1}"
+                        (click)="confirmationRegisterUbication()"
+                        class="btn btn-success"
+                      >
+                         Confirmar Ubicacion
+                      </button>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+ 
+    
+
+</body>
+
+
+

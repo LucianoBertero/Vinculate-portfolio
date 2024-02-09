@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Inscriptos al evento</h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+          <li class="breadcrumb-item">Inscriptos al evento</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-11"> 
+        <div class="card">
+          <div class="card-header color-bg">
+            <h4 class="m-b-0 text-white text-left">Inscriptos al evento <b>{{evento?.name}}</b></h4>
+          </div>
+          
+          <div class="card-body">
+            <div 
+              class=""
+            >
+            <!-- Inserte la busqueda de inscripto serñor -->
+            <div *ngIf="evento && evento.subscribers && evento.subscribers.length > 0" >
+              
+                <!-- <label *ngFor="let subscriberId of evento.subscribers" class="border col-12 m-t-2">
+                  {{ subscriberId}} (Son id de suscripciones :/ )
+
+                </label> -->
+                
+                <!-- <div *ngFor="let nombreUsuario of nameUsuarios; let i = index" class="border col-12 m-t-2 pl-2">
+                  <FONT COLOR="purple"><b>Nombre: </b> </FONT>{{nombreUsuario}} <FONT COLOR="purple">&nbsp;&nbsp; <b>email: </b>  </FONT>{{emailUsuarios[i]}}
+                </div> -->
+
+                  <!-- Este por ahí no anda -->
+                  <div *ngFor="let nombreUsuario of nameUsuarios; let i = index" class="border col-12 m-t-5 ">
+                    <label class="col-0 "><FONT COLOR="purple"><b>Nombre: </b> </FONT><b>{{nombreUsuario}}</b></label> 
+                    <label ><FONT COLOR="purple"><b>&nbsp;&nbsp;email: </b> </FONT><b>{{emailUsuarios[i]}}</b></label>
+                  </div>
+
+                  <!-- <div *ngFor="let nombreUsuario of usuarios" class="col-12 border">
+                    <label class="col-0 "><FONT COLOR="purple"><b>Nombre: </b> </FONT><b>{{nombreUsuario.usuario.name}}</b></label> 
+                    <label ><FONT COLOR="purple"><b>&nbsp;&nbsp;email: </b> </FONT><b>{{nombreUsuario.usuario.email}}</b></label>
+                  </div> -->
+
+             </div>
+            <div *ngIf="!evento || !evento.subscribers || evento.subscribers.length === 0">
+              <p>No hay suscriptores para este evento.</p>
+            </div>
+
+          <!--  -->
+          
+
+          
+
+          <!--  -->
+          
+
+        </div>
+
+        <br>
+        <div class="col-12 pl-0 row flex-column text-right">
+          <label><FONT COLOR="purple"><b>La cantidad de personas inscriptas al evento es: </b> </FONT> <b>{{ nameUsuarios.length }}</b></label>
+          <label><FONT COLOR="purple"><b>La cantidad Maxima de personas que pueden inscribirse al evento es: </b> </FONT><b>{{evento?.maxPeople}}</b> </label>
+        </div>
+
+      </div> 
+      
+    </div>
+    <button type="button" class="btn btn-primary text-right" (click)="volverAtras()" > Volver atras </button>
+    <!-- <h6 class="text-right">El id de tu evento es: {{evento?.uid}}</h6> -->
+  </div>
+  
+  

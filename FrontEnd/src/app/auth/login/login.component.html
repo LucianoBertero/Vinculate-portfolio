@@ -1,0 +1,134 @@
+<!-- <div class="contenedor">
+  <header class="header">
+    <div class="logo-navbar  animate__animated animate__backInDown fast">
+        <img class="img-navbar" src="../../../assets/img/logo.png" alt="">
+        <p class="text-logo"><a href="/preLoading">Vinculate </a></p>
+    </div>
+    <nav>
+          <i class="fa fa-bars icon-bars" id="icon-bars" (click)="toggleMobileMenu()"></i>
+          <ul [class.open]="isMobileMenuOpen" >
+            <li class="active-home"><a class="active-a animate__animated animate__backInRight" href="#">INICIO</a></li>
+            <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">EVENTOS</a></li>
+            <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">VINCULATE</a></li>
+            <li class="li-nav"><a class="animate__animated animate__backInRight" href="#">CONTACTANOS</a></li>
+         </ul>
+    </nav>
+  
+  </header>
+  <div class="card-container">
+   <div class="card">
+      <div class="icon-loguer">
+        <span><i class="fas fa-user fa-xs"></i></span> 
+      </div>
+
+     <form [formGroup]="loginForm" (ngSubmit)="login()">
+      
+        <div class="container-inputs">
+          <div class="form-group">
+            
+            <input formControlName="email" type="text" id="email" [ngClass]="{'input-danger':campoNoValido('email')}"  placeholder="Email" class="form-control">       
+
+
+            <input formControlName="password" type="password" id="password"  [ngClass]="{'input-danger':campoNoValido('password')}" placeholder="Contraseña" class="form-control">
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+          </div>
+        </div> 
+  
+         <div #googleBtn id="buttonDiv"></div> 
+          
+          <div class="register-container">
+            <div class="container-text-register">
+              <p class="text-register text-center">¿Aún no tienes una cuenta?</p>
+            </div>
+            <div class="container-btn-register">
+
+              
+              <a><button class="back-button" type="button" (click)="goBack()"><i class="fas fa-chevron-left"></i> Volver</button></a>
+              <a routerLink="/register"><button class="btn-register">Regístrate</button></a> 
+            
+            </div>
+            
+          
+          </div>
+      
+     </form>
+     
+   </div>
+  
+   </div>
+
+   
+   <footer>
+    <div class="container-footer">
+        <div class="redes">
+            <span class="insta"><i class="fa fa-instagram"></i></span>
+            <span class="twitter"><i class="fa fa-twitter"></i></span>
+            <span class="face"><i class="fa fa-facebook-f"></i></span>
+        </div>
+    </div>
+</footer>
+ </div> -->
+
+
+  <!-- ============================================================== -->
+  <!-- Preloader - style you can find in spinners.css -->
+  <!-- ============================================================== -->
+  <div class="preloader" style="display: none;">
+      <div class="loader">
+          <div class="loader__figure"></div>
+          <p class="loader__label">VINCULATE</p>
+      </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Main wrapper - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <section id="wrapper" class="login-register login-sidebar height">
+    <div class="container col-12 justify-content-end height">
+        <div class="row justify-content-end height">
+            <div class="col-6 d-none d-md-block"></div> <!-- 8 columnas vacías antes del formulario -->
+            <!-- Aumentamos la cantidad de columnas en dispositivos "md" -->
+            <div class="col-md-6 col-lg-4 mx-auto mr-lg-0"> <!-- Columnas del formulario -->
+                <div class="login-box card height mx-auto">
+                    <div class="card-body  m-t-20 col-12">
+                        <form class="form-horizontal form-material height" id="loginform" [formGroup]="loginForm" (ngSubmit)="login()">
+                            <a href="javascript:void(0)" class="text-center db"><img src="../../../assets/img/logoVinculate.png" alt="Home"></a>
+                            <div class="form-group m-t-40">
+                                <div class="col-xs-12">
+                                  <input formControlName="email" type="text" id="email" [ngClass]="{'input-danger':campoNoValido('email')}"  placeholder="Email" class="form-control input-custom p-2"> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                  <input formControlName="password" type="password" id="password"  [ngClass]="{'input-danger':campoNoValido('password')}" placeholder="Contraseña" class="form-control p-2">
+                                </div>
+                            </div>
+                            <div class="form-group text-center m-t-20">
+                                <div class="col-xs-12">
+                                    <button class="btn-custom text-white btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light border col-8 col-xs-12" type="submit">Iniciar sesion</button>
+                                </div>
+                            </div>
+                            
+                            <div class="row justify-content-center m-t-10">
+                              <div #googleBtn id="buttonDiv"></div>
+                            </div>
+                            
+                            <div class="form-group m-t-20">
+                                <div class="col-sm-12 text-center">
+                                    No tenes una cuenta? <a routerLink="/register"  class="text-primary m-l-5"><b>Registrate</b></a>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+  
+
+

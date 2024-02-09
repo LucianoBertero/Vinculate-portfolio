@@ -1,0 +1,7 @@
+.csm-card {
+    background-color: #ffffff; /* Fondo blanco para la tarjeta */
+    border: 1px solid #dcdcdc; /* Borde ligero */
+    margin-top: 3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    padding-top: 0.5rem;
+  }

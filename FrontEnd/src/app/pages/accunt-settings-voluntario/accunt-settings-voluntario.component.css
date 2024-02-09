@@ -1,0 +1,19 @@
+.color-bg {
+    background: #64656649;
+}
+
+
+
+.circular-image-container {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%; /* Aplica la forma circular */
+    margin-bottom: 10px; /* Ajusta según sea necesario */
+}
+
+.circular-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor circular */
+}

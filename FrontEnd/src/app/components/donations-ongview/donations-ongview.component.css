@@ -1,0 +1,66 @@
+
+  
+  /* Estilos para la tarjeta de donaciones */
+  .csm-card {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #dcdcdc; /* Borde ligero */
+    padding: 20px; /* Espaciado interno */
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  }
+  
+  /* Estilos para el contenido de la tarjeta */
+  .card-title {
+    color: purple; /* Morado oscuro para el título */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .csm-btn {
+    width: 7rem;
+  }
+
+  .circle-btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: solid 0.5px #9c9c9c;
+  }
+
+  .i0 {
+    color: #9c9c9c;
+  }
+
+  .i1:hover {
+    background-color: rgb(69, 97, 250);
+    transition: background-color 1s ease;
+    
+  }
+
+  .i1:hover i{
+    color: #fff;
+  }
+
+  .i2:hover {
+    background-color: rgb(238, 255, 0);
+    transition: background-color 1s ease;
+    
+  }
+
+
+  .i3:hover {
+    background-color: rgb(212, 0, 0);
+    transition: background-color 1s ease;
+    
+  }
+
+  .i3:hover i{
+    color: #fff;
+  }
+
+  .paused{
+    background-color: #d6d6d6;
+    color: #9c9c9c;
+  }
+
+  

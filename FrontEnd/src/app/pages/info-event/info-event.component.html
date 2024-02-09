@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Informacion del evento</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+                <li class="breadcrumb-item">Eventos</li>
+            </ol>
+        </div>
+    </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="card">
+                    <div class="card-header color-bg">
+                        <h2 class="m-b-0 text-white">{{evento?.name}}</h2>
+                    </div>
+           <div class="card-body">                   
+            
+            
+            
+            <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-md-8">
+                    <div class="d-md-flex align-items-center justify-content-center">
+                      <div class="col-12">
+                        <h2 class="font-weight-bold text-center text-uppercase">{{evento?.name}} - {{evento?.category}}</h2>
+                        <div class="row justify-content-center border m-3 p-3">
+                          <div class="col-md-6 col-sm-12 m-b-3 text-center">
+                            <h4 class="font-weight-bold ">Fecha inicio:</h4>
+                            <p class="font-weight-normal">{{ evento?.startDate | date: 'dd/MM/yyyy' }}</p>
+                          </div>
+                          <div class="col-md-6 col-sm-12 m-b-3 text-center">
+                            <h4 class="font-weight-bold ">Hora inicio:</h4>
+                            <p class="font-weight-normal ">{{evento?.startTime}}</p>
+                          </div>
+                          <div class="col-md-6 col-sm-12 m-b-3 text-center">
+                            <h4 class="font-weight-bold ">Fecha finalización:</h4>
+                            <p class="font-weight-normal text-center">{{ evento?.endDate | date: 'dd/MM/yyyy' }}</p>
+                          </div>
+                          <div class="col-md-6 col-sm-12 m-b-3 text-center">
+                            <h4 class="font-weight-bold ">Hora fin:</h4>
+                            <p class="font-weight-normal ">{{evento?.endTime}}</p>
+                          </div>
+                        </div>
+                        <div class="col-12 m-b-3 text-center">
+                          <h4 class="font-weight-bold ">Descripción:</h4>
+                          <p class="font-weight-normal">{{evento?.description}}</p>
+                        </div>
+                        <div class="col-12 m-b-3 text-center">
+                          <h4 class="font-weight-bold ">Cómo llegar a la ubicación del evento?</h4>
+                          <p class="font-weight-normal">{{evento?.howToGet}}</p>
+                        </div>
+                        <div class="col-12 m-b-3 text-center">
+                          <h4 class="font-weight-bold ">Qué necesito para participar del evento?</h4>
+                          <p class="font-weight-normal">{{evento?.requirements}}</p>
+                        </div>
+                        <div class="col-12 mb-3 text-center">
+                          <h4 class="font-weight-bold">Cantidad máxima de cupos en este evento:</h4>
+                          <p class="font-weight-normal">{{evento?.maxPeople}}</p>
+                        </div>
+                        <div class="col-12 mb-3 text-center">
+                          <h4 class="font-weight-bold">Cantidad inscriptos en el evento:</h4>
+                          <p class="font-weight-normal">{{ evento?.subscription ? evento.subscription : '0' }}</p>
+                        </div>
+                        <div class="col-12 mb-3 text-center">
+                          <button class="btn btn-primary" (click)="goBack()">Ver ubicacion del evento!<a href=""></a> </button>
+                        </div>
+
+                        <div class="col-12 mb-3 text-center mt-5" *ngIf="isButtonVisible" [class.hide]="btnHide">
+                          <button class="btn btn-success btn-md btn-block btn-rounded text-uppercase waves-effect waves-light"
+                                  (click)="subscribeVolunteer()" [disabled]="isButtonDisabled">
+                            SUSCRIBIRME
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    
+

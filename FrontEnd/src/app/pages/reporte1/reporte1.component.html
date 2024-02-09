@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Participacion de todos los eventos publicados</h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+          <li class="breadcrumb-item">Reporte de Eventos</li>
+          <li class="breadcrumb-item">Participacion de todos los eventos publicados</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-11">
+        <div class="card">
+          <div class="card-header color-bg">
+            <h4 class="m-b-0 text-white"><b>Reporte de Participacion de todos los eventos publicados</b></h4>
+          </div>
+
+          <div class="card-body">
+            <div
+              class="row d-flex justify-content-center align-items-center m-b-40"
+            >
+            <!-- Lo que se va a imprimir en pdf -->
+
+            <div id="PDF-Participacion-Eventos-Actual">
+              
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <thead >
+                        <tr class="text-center">
+                          <th>Nombre del Evento</th>
+                          <th>Fecha de Inicio</th>
+                          <th>Cantidad de Inscriptos</th>
+                          <th>Limite de Inscripcion</th>
+                          <th>Porcentaje de Participacion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let e of filtredEvents" class="text-center">
+                          <td>{{e?.name}}</td>
+                          <td>{{e?.startDate.split("T")[0]}}</td>
+                          <td>{{e?.subscribers}}</td>
+                          <td>{{e?.maxPeople}}</td>
+                          <td>{{e?.porcentajeParticipacion}} %</td>
+                        </tr> 
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <!--  -->
+
+
+            </div>
+            <!--  -->
+
+        </div>
+      </div>
+    </div>
+    <div class="form-actions d-flex justify-content-between m-t-5">
+        <button type="button" (click)="volverAtras()" class="btn btn-primary mr-auto"> Volver Atras</button>
+        <button type="button" (click)="downloadPDF()" class="btn btn-danger "> <i class="fa fa-download" aria-hidden="true"></i> &nbsp; Descargar en PDF</button>
+    </div>
+
+  </div>
+  

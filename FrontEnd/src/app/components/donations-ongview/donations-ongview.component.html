@@ -1,0 +1,153 @@
+<div *ngIf="isMyONG" class="container">
+    <div class="addDonation">
+        <button class="btn btn-success float-left mt-3" (click)="addDonations()">Agregar donación</button>
+    </div>
+    <div  class="row justify-content-center align-items-center m-t-30 col-12">
+        <div *ngFor="let d of donations$ | async" class="d-flex flex-column col-8 border m-t-30 csm-card align-items-center justify-content-center paused">
+          <div  class="col-9 m-t-10">
+            <h1 class="card-title paused">{{ d?.title }}</h1>
+            <h4 class="card-text m-t-10 paused">{{ d?.typeDonation }}</h4>
+            <p class="card-text m-t-20 mb-3 paused">{{ d?.description }}</p>
+            <div class="container col-6 m-t-10 d-flex align-items-center justify-content-center">
+            
+                <button class="circle-btn m-r-20 d-flex align-items-center justify-content-center i1 paused" (click)="openModifyDonations(d)"><i class="fas fa-pencil-alt"></i></button>
+            
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let d of donationsRnd$ | async" class="d-flex flex-column col-8 border m-t-30 csm-card align-items-center justify-content-center" >
+            <div  class="col-9 m-t-10">
+              <h1 class="card-title">{{ d?.title }}</h1>
+              <h4 class="card-text m-t-10">{{ d?.typeDonation }}</h4>
+              <p class="card-text m-t-20 mb-3">{{ d?.description }}</p>
+              <div class="container col-6 m-t-10 d-flex align-items-center justify-content-center">
+              
+                  <button class="circle-btn m-r-20 d-flex align-items-center justify-content-center i1" (click)="openModifyDonations(d)"><i class="fas fa-pencil-alt"></i></button>
+              
+              </div>
+            </div>
+          </div>
+    </div>
+    
+</div>
+
+<div *ngIf="donations[0] === undefined" class="container">
+    <div class="addDonation mt-4">
+
+        <h2>No se aceptan donaciones por el momento!</h2>
+        
+    </div>
+    
+</div>
+
+
+
+<div class="fondo-modal-imagen" [class.oculto]="modalAddDonationsSerice.ocultarModal">
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registra una neuva donacion</h4>
+                    
+                </div>
+                <div class="modal-body col-12 m-auto">
+                    <form [formGroup]="addDonationsForm" (submit)="registerDonation()" action="#">
+                        <div class="form-body col-12">
+                            <div class="row col-12 d-flex flex-column">
+
+                                <div class=" mb-3 ">
+                                    <input formControlName="title" [ngClass]="{'is-invalid':campoNoValidoDonacion('title')}" type="text" class="form-control" placeholder="Donacion">
+                                </div>
+                                
+                                
+                                <select class="select-tipo form-control custom-select input-type mb-3"  formControlName="typeDonation" [ngClass]="{'is-invalid':campoNoValidoDonacion('typeDonation')}">
+                                    <option value="" selected>Seleccione tipo de donacion</option>
+                                    <option  *ngFor="let donation of donationsType" [value]="donation">{{ donation }}</option>
+                                </select>
+    
+                                <div class="">
+                                    <input formControlName="description" type="text"  class="form-control" placeholder="Descripcion" [ngClass]="{'is-invalid':campoNoValidoDonacion('description')}">
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row justify-content-center">
+                                
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <div>
+                                            <button type="button" class="btn btn-inverse waves-effect m-r-10 m-b-10" (click)="cerrarModal()" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-b-10"><i class="fa fa-check"></i> Confirmar</button>
+                                        </div>
+                                    </div>
+                               
+                            </div>
+                            
+                    </div>
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fondo-modal-imagen" [class.oculto]="modalModifyDonations.ocultarModal">
+    <div id="responsive-modal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block;">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modificar donacion</h4>
+                    
+                </div>
+                <div class="modal-body col-12 m-auto">
+                    <form [formGroup]="modifyDonationsForm" (submit)="updateDonation()" action="#">
+                        <div class="form-body col-12">
+                            <div class="row col-12 d-flex flex-column">
+
+                                <div class=" mb-3 ">
+                                    <input formControlName="title" [ngClass]="{'is-invalid':campoNoValidoModifyDonacion('title')}" type="text" class="form-control" placeholder="Donacion">
+                                </div>
+                                
+                                
+                                <select class="select-tipo form-control custom-select input-type mb-3"  formControlName="typeDonation" [ngClass]="{'is-invalid':campoNoValidoModifyDonacion('typeDonation')}">
+                                    <option value="" selected>Seleccione tipo de donacion</option>
+                                    <option  *ngFor="let donation of donationsType" [value]="donation">{{ donation }}</option>
+                                </select>
+    
+                                <div class="">
+                                    <input formControlName="description" type="text"  class="form-control" placeholder="Descripcion" [ngClass]="{'is-invalid':campoNoValidoModifyDonacion('description')}">
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="d-flex mt-3 col-12">
+                                    <!-- Botones de eliminar y pausar -->
+                                    <div>
+                                        <button type="button" class="btn btn-danger waves-effect m-r-10 m-b-10" (click)="deleteDonation()" data-dismiss="modal"><i class="fas fa-times"></i></button>
+                                        <button type="submit" class="btn btn-warning waves-effect waves-light m-r-10 m-b-10" (click)="pauseDonation()"><i class="fas fa-pause"></i></button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-b-10" (click)="resumeDonation()"><i class="fas fa-play"></i></button>
+
+                                    </div>
+                            
+                                    <!-- Espacio entre grupos de botones -->
+                                    <div style="flex-grow: 1"></div>
+                            
+                                    <!-- Botones de cancelar y confirmar -->
+                                    <div>
+                                        <button type="button" class="btn btn-inverse waves-effect m-r-10 m-b-10" (click)="closeModifyDonations()" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-b-10"><i class="fa fa-check"></i> Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    </div>
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

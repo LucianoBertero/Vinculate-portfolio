@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Mis eventos vigentes</h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Inicio</a></li>
+          <li class="breadcrumb-item">Mis eventos vigentes</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-11">
+        <div class="card">
+          <div class="card-header color-bg">
+            <h4 class="m-b-0 text-white"><b>Eventos de la Organizacion</b></h4>
+          </div>
+
+          <div class="card-body">
+            <div
+              class="row d-flex justify-content-center align-items-center m-b-40"
+            >
+            <!--  -->
+
+            <!-- Arreglo orginal -->
+            <!-- <div *ngFor="let e of newArrayEvents" class="border col-12 m-t-10 "> -->
+            
+            <!-- Arreglo para que lo muestre ordenad -->
+            <div *ngFor="let e of filtredEvents" class="border col-11 m-t-10 csm-card">
+
+                <div class="card text-left custom-back">
+                  <div class="card-body d-flex flex-column">
+                    <div class="">
+                      <h1 class="card-title"><FONT COLOR="purple"><b> {{ e?.name }} </b> </FONT></h1>
+                      <p></p>
+                      <p class="card-text m-t-20"><FONT COLOR="purple"><b>Descripcion: </b> </FONT> {{ e?.description }}</p>
+
+                      <div>
+                        <label><FONT COLOR="purple"><b>Tipo de evento: </b> </FONT>{{ e?.category }}</label><br>
+                        <label><FONT COLOR="purple"><b>Cantidad maxima de personas: </b> </FONT> {{ e?.maxPeople }} </label><br>
+                        <!-- <label><FONT COLOR="purple"><b>Estado del evento: </b> </FONT> {{e.estado}} </label><br> -->
+                        <label><FONT COLOR="purple"><b>Fecha Inicio: </b> </FONT>{{e?.startDate.split("T")[0]}}</label><br>
+                        <label class=""><FONT COLOR="purple"><b>Estado del evento: </b> </FONT> <span class="font-weight-bold card-text" [ngClass]="{
+                          'card-proximo': e.estado === 'Proximo a comenzar',
+                          'card-en-curso': e.estado === 'EnCurso',
+                          'card-finalizado': e.estado === 'Finalizado'
+                        }">{{e.estado}}</span></label><br>
+                      </div>
+                      
+                      <!-- <p class="card-text m-t-10"><b>Tipo de evento: </b> {{ e?.category }} </p> -->
+                      
+                      <!-- <p class="card-text m-t-10">{{ e?.uid }}</p> -->
+
+                      <!-- <label class="m-t-20"><b>Cantidad maxima de personas:</b> <span class="card-text">{{ e?.maxPeople  }}</span></label>
+                      <br>
+                      <label class="m-t-20"><b>Estado:</b> <span class="card-text">{{e.estado}}</span></label> -->
+
+                      <!-- <p>{{e?.uid}}</p> -->
+                      
+                    </div>
+
+                    <div class="d-flex justify-content-end m-t-20">
+                      
+                      <div *ngIf= "e?.estado === 'Proximo a comenzar' " class="mr-auto">
+                        <button type="button" class="btn btn-danger" (click)="eliminarEvento(e?.name, e?.uid)"> <i class="fa fa-times" aria-hidden="true"></i> Eliminar evento</button>
+                      </div>
+
+                      <div *ngIf= "e?.estado === 'Proximo a comenzar' ">
+                        <button type="button" class="btn btn-primary mr-2" > <i class="fa fa-pencil" aria-hidden="true"></i> Modificar </button> 
+                      </div>
+                      
+                      <button type="button" class="btn btn-primary" (click)="verCantidadInscriptos(e?.uid)"><i class="fa fa-users" aria-hidden="true"></i> Ver inscriptos al evento </button>
+                    </div>
+
+                  </div>
+                </div>
+
+            </div>
+
+
+            <div *ngIf="filtredEvents.length === 0"  class=" ">
+              <h1 class=" text-center col-12 m-t-10"><FONT COLOR="purple"><b>¡Ooops!</b></FONT></h1><br>
+              <h4 class=" text-center col-12 m-t-10">Todavia no tienes ningun evento publicado</h4><br>
+              <h4 class=" text-center">Te recomendamos crees algun para hacer un <FONT COLOR="green"><b>mundo mejor</b></FONT> </h4><br>
+            </div>
+
+            <!--  -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
